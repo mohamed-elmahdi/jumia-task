@@ -17,7 +17,11 @@
 **API:**
  
 Description: Phone number listing.
+
 Path: GET `/api/v1/phone-numbers`
+
 Params:
+
 String countryName, QueryParam, Optional
+
 Boolean isValid, QueryParam, Optional
