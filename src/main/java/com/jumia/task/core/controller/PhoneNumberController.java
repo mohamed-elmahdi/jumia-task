@@ -1,6 +1,6 @@
 package com.jumia.task.core.controller;
 
-import com.jumia.task.core.dao.PhoneNumberDAO;
+import com.jumia.task.core.dto.PhoneNumberDTO;
 import com.jumia.task.core.service.PhoneNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +22,7 @@ public class PhoneNumberController {
     }
 
     @GetMapping
-    public List<PhoneNumberDAO> listPhoneNumbers(@RequestParam(required = false) String countryName,
+    public List<PhoneNumberDTO> listPhoneNumbers(@RequestParam(required = false) String countryName,
                                                  @RequestParam(required = false) Boolean isValid){
 
         return phoneNumberService.listPhoneNumbers(countryName, isValid);

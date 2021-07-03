@@ -1,6 +1,6 @@
 package com.jumia.task.core.service;
 
-import com.jumia.task.core.dao.PhoneNumberDAO;
+import com.jumia.task.core.dto.PhoneNumberDTO;
 import com.jumia.task.core.repo.CountryRepository;
 import com.jumia.task.core.repo.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class PhoneNumberService {
         this.countryRepository = countryRepository;
     }
 
-    public List<PhoneNumberDAO> listPhoneNumbers(String countryName, Boolean isValid){
+    public List<PhoneNumberDTO> listPhoneNumbers(String countryName, Boolean isValid){
 
         return new ListPhoneNumbersProcessor(countryName, isValid, customerRepository, countryRepository).execute();
 

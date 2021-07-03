@@ -2,7 +2,7 @@ package com.jumia.task.core.service;
 
 import com.jumia.task.core.model.Customer;
 import com.jumia.task.core.repo.CustomerRepository;
-import com.jumia.task.core.dao.PhoneNumberDAO;
+import com.jumia.task.core.dto.PhoneNumberDTO;
 import com.jumia.task.core.model.Country;
 import com.jumia.task.core.repo.CountryRepository;
 
@@ -23,7 +23,7 @@ public class ListPhoneNumbersProcessor {
         this.countryRepository = countryRepository;
     }
 
-    public List<PhoneNumberDAO> execute(){
+    public List<PhoneNumberDTO> execute(){
         List<Customer> customers = customerRepository.findAll();
         List<Customer> customersFilteredByPhoneValidity = filterCustomersByPhoneValidity(customers, isValid);
         List<Customer> customersFilteredByCountryName = filterCustomersByCountryName(customersFilteredByPhoneValidity, countryName);
@@ -65,9 +65,9 @@ public class ListPhoneNumbersProcessor {
         return false;
     }
 
-    private ArrayList<PhoneNumberDAO> constructPhoneNumbersList(List<Customer> customers){
+    private ArrayList<PhoneNumberDTO> constructPhoneNumbersList(List<Customer> customers){
 
-        ArrayList<PhoneNumberDAO> phoneNumbers = new ArrayList<>();
+        ArrayList<PhoneNumberDTO> phoneNumbers = new ArrayList<>();
         List<Country> countries = countryRepository.findAll();
 
         for(Customer customer : customers){
@@ -80,7 +80,7 @@ public class ListPhoneNumbersProcessor {
 
             Boolean isValid = validatePhoneNumber(customer.getPhone(), List.of(countryValidRegex));
 
-            phoneNumbers.add(new PhoneNumberDAO(countryName, isValid, countryCode, number));
+            phoneNumbers.add(new PhoneNumberDTO(countryName, isValid, countryCode, number));
         }
 
         return phoneNumbers;

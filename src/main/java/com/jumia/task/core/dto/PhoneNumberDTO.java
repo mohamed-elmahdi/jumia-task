@@ -1,14 +1,14 @@
-package com.jumia.task.core.dao;
+package com.jumia.task.core.dto;
 
-public class PhoneNumberDAO {
+public class PhoneNumberDTO {
     private String country;
     private Boolean isValid;
     private String countryCode;
     private String number;
 
-    public PhoneNumberDAO(){}
+    public PhoneNumberDTO(){}
 
-    public PhoneNumberDAO(String country, Boolean isValid, String countryCode, String number) {
+    public PhoneNumberDTO(String country, Boolean isValid, String countryCode, String number) {
         this.country = country;
         this.isValid = isValid;
         this.countryCode = countryCode;

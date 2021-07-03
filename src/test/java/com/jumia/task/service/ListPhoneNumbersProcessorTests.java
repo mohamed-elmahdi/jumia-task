@@ -1,6 +1,6 @@
 package com.jumia.task.service;
 
-import com.jumia.task.core.dao.PhoneNumberDAO;
+import com.jumia.task.core.dto.PhoneNumberDTO;
 import com.jumia.task.core.model.Customer;
 import com.jumia.task.core.repo.CustomerRepository;
 import com.jumia.task.core.service.ListPhoneNumbersProcessor;
@@ -36,7 +36,7 @@ public class ListPhoneNumbersProcessorTests {
         List<Country> countries = List.of(cameroon, ethiopia, morocco, uganda, mozambique);
         Mockito.when(countryRepository.findAll()).thenReturn(countries);
 
-        List<PhoneNumberDAO> response = new ListPhoneNumbersProcessor(null, null, customerRepository, countryRepository).execute();
+        List<PhoneNumberDTO> response = new ListPhoneNumbersProcessor(null, null, customerRepository, countryRepository).execute();
 
         Assertions.assertEquals(4, response.size());
     }
@@ -63,7 +63,7 @@ public class ListPhoneNumbersProcessorTests {
         Mockito.when(countryRepository.findAll()).thenReturn(countries);
         Mockito.when(countryRepository.findByName("Morocco")).thenReturn(Optional.of(morocco));
 
-        List<PhoneNumberDAO> response = new ListPhoneNumbersProcessor("Morocco", null, customerRepository, countryRepository).execute();
+        List<PhoneNumberDTO> response = new ListPhoneNumbersProcessor("Morocco", null, customerRepository, countryRepository).execute();
 
         Assertions.assertEquals(2, response.size());
 
@@ -99,7 +99,7 @@ public class ListPhoneNumbersProcessorTests {
         List<Country> countries = List.of(cameroon, ethiopia, morocco, uganda, mozambique);
         Mockito.when(countryRepository.findAll()).thenReturn(countries);
 
-        List<PhoneNumberDAO> response = new ListPhoneNumbersProcessor(null, false, customerRepository, countryRepository).execute();
+        List<PhoneNumberDTO> response = new ListPhoneNumbersProcessor(null, false, customerRepository, countryRepository).execute();
 
         Assertions.assertEquals(3, response.size());
 
@@ -142,7 +142,7 @@ public class ListPhoneNumbersProcessorTests {
         Mockito.when(countryRepository.findAll()).thenReturn(countries);
         Mockito.when(countryRepository.findByName("Morocco")).thenReturn(Optional.of(morocco));
 
-        List<PhoneNumberDAO> response = new ListPhoneNumbersProcessor("Morocco", true, customerRepository, countryRepository).execute();
+        List<PhoneNumberDTO> response = new ListPhoneNumbersProcessor("Morocco", true, customerRepository, countryRepository).execute();
 
         Assertions.assertEquals(1, response.size());
 
